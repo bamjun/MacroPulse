@@ -3,15 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MacroPulse — The Living Ledger</title>
-    <meta name="description" content="한국과 미국의 기준금리, 환율 데이터를 실시간으로 추적하고 AI 기반 거시경제 분석을 제공합니다." />
+
+    <!-- Primary SEO -->
+    <title>MacroPulse — 한미 기준금리·환율 실시간 대시보드 & AI 분석</title>
+    <meta name="description" content="한국(BOK)과 미국(FED) 기준금리, USD/KRW 환율을 실시간 차트로 추적하고 Gemini AI 기반 거시경제 분석을 제공하는 인텔리전스 플랫폼입니다." />
+    <meta name="keywords" content="기준금리,한국은행,BOK,FED,미국금리,환율,USD/KRW,원달러,거시경제,금리스프레드,AI분석,MacroPulse,interest rate,exchange rate,macro economy" />
+    <meta name="author" content="MacroPulse" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://macro-pulse.cc" />
+
+    <!-- Open Graph (Facebook, LinkedIn, KakaoTalk) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MacroPulse" />
+    <meta property="og:title" content="MacroPulse — 한미 기준금리·환율 실시간 대시보드 & AI 분석" />
+    <meta property="og:description" content="한국·미국 기준금리와 USD/KRW 환율을 실시간 차트로 추적하고, Gemini AI가 거시경제를 분석합니다." />
+    <meta property="og:url" content="https://macro-pulse.cc" />
+    <meta property="og:image" content="https://macro-pulse.cc/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MacroPulse 대시보드 - 한미 금리 비교 차트와 환율 그래프" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MacroPulse — 한미 기준금리·환율 AI 대시보드" />
+    <meta name="twitter:description" content="BOK·FED 금리, USD/KRW 환율을 실시간 추적 + Gemini AI 경제 분석" />
+    <meta name="twitter:image" content="https://macro-pulse.cc/og-image.png" />
+
+    <!-- Naver / Daum specific -->
+    <meta name="naver-site-verification" content="" />
+    <meta property="dg:official" content="true" />
+
+    <!-- Multilingual -->
+    <link rel="alternate" hreflang="ko" href="https://macro-pulse.cc" />
+    <link rel="alternate" hreflang="en" href="https://macro-pulse.cc" />
+    <link rel="alternate" hreflang="x-default" href="https://macro-pulse.cc" />
+
+    <!-- Theme & Icons -->
     <meta name="theme-color" content="#182a21" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+    <meta name="msapplication-TileColor" content="#182a21" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="MacroPulse" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://ecos.bok.or.kr" />
+    <link rel="preconnect" href="https://api.stlouisfed.org" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "MacroPulse",
+      "alternateName": "매크로펄스",
+      "url": "https://macro-pulse.cc",
+      "description": "한국과 미국의 기준금리, USD/KRW 환율을 실시간으로 추적하고 AI 기반 거시경제 분석을 제공하는 대시보드",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "MacroPulse"
+      },
+      "featureList": [
+        "한국 기준금리 (BOK) 실시간 추적",
+        "미국 기준금리 (FED) 실시간 추적",
+        "USD/KRW 환율 차트",
+        "한미 금리 스프레드 분석",
+        "Gemini AI 거시경제 분석",
+        "최대 35년 역사 데이터"
+      ],
+      "screenshot": "https://macro-pulse.cc/og-image.png",
+      "inLanguage": ["ko", "en"]
+    }
+    </script>
   </head>
   <body>
+    <!-- SEO: Noscript fallback for crawlers -->
+    <noscript>
+      <div style="padding:2rem;font-family:sans-serif;max-width:800px;margin:0 auto">
+        <h1>MacroPulse — 한미 기준금리·환율 실시간 대시보드</h1>
+        <p>한국(BOK)과 미국(FED) 기준금리, USD/KRW 환율을 실시간 차트로 추적하고 Gemini AI 기반 거시경제 분석을 제공합니다.</p>
+        <h2>주요 기능</h2>
+        <ul>
+          <li>한국 기준금리 (BOK Base Rate) 실시간 추적</li>
+          <li>미국 기준금리 (FED Target Rate) 실시간 추적</li>
+          <li>USD/KRW 원달러 환율 차트</li>
+          <li>한미 금리 스프레드 분석</li>
+          <li>기준금리 × 환율 상관관계 듀얼 차트</li>
+          <li>Gemini AI 거시경제 분석 채팅</li>
+          <li>6개월 ~ 최대 35년 역사 데이터</li>
+        </ul>
+        <h2>데이터 소스</h2>
+        <ul>
+          <li>한국은행 경제통계시스템 (ECOS) Open API</li>
+          <li>미국 연방준비은행 FRED API</li>
+          <li>Google Gemini 2.5 Flash AI</li>
+        </ul>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
