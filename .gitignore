@@ -1,0 +1,55 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment / Secrets
+.dev.vars
+.env.development.local
+.env.development
+.env.local
+.env
+.env.production
+
+# Cloudflare Wrangler
+.wrangler/
+.mf/
+
+# SQLite (Wrangler D1 local, miniflare, etc.)
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite3-journal
+
+# OS files
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+*.lnk
+
+# Coverage / Testing
+coverage/
+*.lcov
+
+# Misc
+*.tsbuildinfo
+*.cache
+.turbo
