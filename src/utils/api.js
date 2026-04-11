@@ -63,11 +63,18 @@ export async function* streamGemini(message, history = [], context = null) {
   }
 }
 
-// Format date as YYYY-MM-DD, n months ago
+// Format date as YYYY-MM-DD, n months ago. 0 = MAX (back to 1990)
 export function getDateRange(monthsAgo) {
   const end = new Date();
   const start = new Date();
-  start.setMonth(start.getMonth() - monthsAgo);
+
+  if (monthsAgo === 0) {
+    // MAX range: go back to 1990 for full historical data
+    start.setFullYear(1990, 0, 1);
+  } else {
+    start.setMonth(start.getMonth() - monthsAgo);
+  }
+
   return {
     startDate: start.toISOString().slice(0, 10),
     endDate: end.toISOString().slice(0, 10),

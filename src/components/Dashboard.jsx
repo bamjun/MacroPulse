@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
-import { getRateChartConfig, getSpreadChartConfig, getExchangeChartConfig } from "../utils/chartConfig";
+import { getRateChartConfig, getSpreadChartConfig, getExchangeChartConfig, getRateExchangeChartConfig } from "../utils/chartConfig";
 
 export default function Dashboard({
   ratesData,
@@ -16,6 +16,9 @@ export default function Dashboard({
     { label: "1Y", months: 12 },
     { label: "2Y", months: 24 },
     { label: "5Y", months: 60 },
+    { label: "10Y", months: 120 },
+    { label: "20Y", months: 240 },
+    { label: "MAX", months: 0 },
   ];
 
   return (
@@ -157,6 +160,42 @@ export default function Dashboard({
             <div className="w-full h-[240px] skeleton"></div>
           ) : (
             <ChartCanvas config={getExchangeChartConfig(exchangeData || [])} height={240} />
+          )}
+        </div>
+
+        {/* Combined Rate + Exchange Chart (Dual Axis) */}
+        <div className="md:col-span-12 bg-surface-container-low rounded-xl p-6 md:p-10 min-h-[420px]">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <div>
+              <span className="font-label text-[0.75rem] uppercase tracking-widest text-secondary font-bold">
+                Correlation Analysis
+              </span>
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-primary tracking-tight mt-1">
+                기준금리 추이 × USD/KRW 환율
+              </h3>
+            </div>
+            <div className="flex items-center gap-4 mt-3 md:mt-0">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-0.5 bg-primary"></div>
+                <span className="font-label text-[0.6rem] text-outline uppercase">BOK</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-0.5 bg-secondary"></div>
+                <span className="font-label text-[0.6rem] text-outline uppercase">FED</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-0.5 border-t-2 border-dashed border-[#5b7a6b]"></div>
+                <span className="font-label text-[0.6rem] text-outline uppercase">KRW</span>
+              </div>
+            </div>
+          </div>
+          {loading ? (
+            <div className="w-full h-[340px] skeleton"></div>
+          ) : (
+            <ChartCanvas
+              config={getRateExchangeChartConfig(ratesData, exchangeData)}
+              height={340}
+            />
           )}
         </div>
 
