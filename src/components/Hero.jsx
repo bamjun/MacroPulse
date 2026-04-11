@@ -1,3 +1,5 @@
+import WebGLShader from "./WebGLShader";
+
 export default function Hero({ ratesSummary, exchangeSummary }) {
   const bokRate = ratesSummary?.bok?.current ?? "—";
   const fedRate = ratesSummary?.fed?.current ?? "—";
@@ -8,13 +10,15 @@ export default function Hero({ ratesSummary, exchangeSummary }) {
 
   return (
     <header id="hero" className="relative min-h-screen flex items-end justify-start overflow-hidden pt-32 pb-24 px-8 md:px-20 bg-primary">
-      {/* Background Image */}
+      {/* WebGL Shader Background */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-br from-primary via-primary-container to-primary opacity-90"></div>
+        <WebGLShader />
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-transparent to-transparent"></div>
         {/* Decorative circles */}
         <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-secondary/5 blur-3xl"></div>
         <div className="absolute bottom-40 left-10 w-72 h-72 rounded-full bg-primary-fixed/10 blur-3xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-5xl w-full">
