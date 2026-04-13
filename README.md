@@ -78,7 +78,7 @@ MacroPulse/
 ### 1. 설치
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/bamjun/MacroPulse.git
 cd MacroPulse
 npm install
 ```
@@ -117,20 +117,20 @@ npm run dev:full
 
 ### Cloudflare Pages
 
-```bash
-# 1. 빌드
-npm run build
+- secrets.json 파일 생성
 
-# 2. 배포
-npx wrangler pages deploy ./dist --commit-dirty=true
-
-# 3. 시크릿 등록 (최초 1회)
-echo "YOUR_KEY" | npx wrangler pages secret put ECOS_API_KEY --project-name macropulse
-echo "YOUR_KEY" | npx wrangler pages secret put FRED_API_KEY --project-name macropulse
-echo "YOUR_KEY" | npx wrangler pages secret put GEMINI_API_KEY --project-name macropulse
+```json
+{
+  "ECOS_API_KEY": "your-key",
+  "FRED_API_KEY": "your-key",
+  "GEMINI_API_KEY": "your-key"
+}
 ```
 
-> `functions/` 디렉토리는 `pages deploy` 시 자동으로 Workers로 변환됩니다. 별도 배포 불필요.
+```bash
+# 배포
+npm run deploy
+```
 
 ---
 
