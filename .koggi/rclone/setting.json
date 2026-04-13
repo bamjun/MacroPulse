@@ -3,6 +3,7 @@
   "remote": "crypt-gdrive-khy5116@naver.com",
   "files": [
     ".dev.vars",
-    ".env.development"
+    ".env.development",
+    "secrets.json"
   ]
 }
