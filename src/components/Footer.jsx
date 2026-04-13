@@ -46,10 +46,6 @@ export default function Footer() {
           <span className="font-label text-[0.6rem] uppercase text-outline tracking-widest">
             FRED / St. Louis Fed
           </span>
-          <span className="text-outline-variant">·</span>
-          <span className="font-label text-[0.6rem] uppercase text-outline tracking-widest">
-            Google Gemini 2.5 Flash
-          </span>
         </div>
       </div>
     </footer>

@@ -35,11 +35,13 @@ export default function GeminiChat({ ratesSummary, exchangeSummary }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
-  const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
 
   const sendMessage = async (text) => {
@@ -114,58 +116,48 @@ export default function GeminiChat({ ratesSummary, exchangeSummary }) {
               실시간 금리·환율 데이터를 기반으로 AI 거시경제 분석을 받아보세요.
             </p>
           </div>
-          <div className="flex items-center gap-2 mt-4 md:mt-0">
-            <span className="material-symbols-outlined text-secondary text-sm"
-              style={{ fontVariationSettings: "'FILL' 1" }}>
-              auto_awesome
-            </span>
-            <span className="font-label text-[0.65rem] text-outline uppercase tracking-widest">
-              Gemini 2.5 Flash
-            </span>
-          </div>
         </div>
 
-        {/* Preset Questions */}
-        {messages.length === 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-            {PRESET_QUESTIONS.map((preset) => (
-              <button
-                key={preset.label}
-                onClick={() => sendMessage(preset.question)}
-                disabled={isStreaming}
-                className="flex items-center gap-4 p-5 bg-surface-container-low rounded-xl
-                  hover:bg-surface-container-high transition-all text-left group cursor-pointer
-                  disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <div className="shrink-0 w-10 h-10 flex items-center justify-center rounded-full
-                  bg-primary/5 text-primary group-hover:bg-primary group-hover:text-on-primary
-                  transition-all">
-                  <span className="material-symbols-outlined text-lg">{preset.icon}</span>
-                </div>
-                <div>
-                  <h4 className="font-headline font-bold text-sm text-primary">{preset.label}</h4>
-                  <p className="text-[0.75rem] text-on-surface-variant mt-0.5 line-clamp-1">
-                    {preset.question}
-                  </p>
-                </div>
-              </button>
-            ))}
-          </div>
-        )}
-
         {/* Chat Messages */}
-        <div className="bg-surface rounded-xl p-6 min-h-[200px] max-h-[600px] overflow-y-auto mb-4">
+        <div ref={chatContainerRef} className="bg-surface rounded-xl p-6 min-h-[200px] max-h-[600px] overflow-y-auto mb-4">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-48 opacity-40">
-              <span
-                className="material-symbols-outlined text-4xl text-primary mb-3"
-                style={{ fontVariationSettings: "'FILL' 0, 'wght' 200" }}
-              >
-                psychology
-              </span>
-              <p className="font-label text-sm text-on-surface-variant">
-                질문을 입력하거나 프리셋을 선택하세요
-              </p>
+            <div>
+              {/* Preset Questions - inside container to prevent layout shift */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                {PRESET_QUESTIONS.map((preset) => (
+                  <button
+                    key={preset.label}
+                    onClick={() => sendMessage(preset.question)}
+                    disabled={isStreaming}
+                    className="flex items-center gap-4 p-5 bg-surface-container-low rounded-xl
+                      hover:bg-surface-container-high transition-all text-left group cursor-pointer
+                      disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <div className="shrink-0 w-10 h-10 flex items-center justify-center rounded-full
+                      bg-primary/5 text-primary group-hover:bg-primary group-hover:text-on-primary
+                      transition-all">
+                      <span className="material-symbols-outlined text-lg">{preset.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-headline font-bold text-sm text-primary">{preset.label}</h4>
+                      <p className="text-[0.75rem] text-on-surface-variant mt-0.5 line-clamp-1">
+                        {preset.question}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-col items-center justify-center h-24 opacity-40">
+                <span
+                  className="material-symbols-outlined text-4xl text-primary mb-3"
+                  style={{ fontVariationSettings: "'FILL' 0, 'wght' 200" }}
+                >
+                  psychology
+                </span>
+                <p className="font-label text-sm text-on-surface-variant">
+                  질문을 입력하거나 프리셋을 선택하세요
+                </p>
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
@@ -198,7 +190,7 @@ export default function GeminiChat({ ratesSummary, exchangeSummary }) {
                   </div>
                 </div>
               ))}
-              <div ref={messagesEndRef} />
+
             </div>
           )}
         </div>
