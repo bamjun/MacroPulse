@@ -61,6 +61,24 @@ export async function* streamGemini(message, history = [], context = null) {
       }
     }
   }
+
+  // Process any remaining data in the buffer after stream ends
+  if (buffer.trim()) {
+    const line = buffer.trim();
+    if (line.startsWith("data: ")) {
+      const dataStr = line.slice(6).trim();
+      if (dataStr !== "[DONE]") {
+        try {
+          const parsed = JSON.parse(dataStr);
+          if (parsed.text) {
+            yield parsed.text;
+          }
+        } catch {
+          // skip malformed
+        }
+      }
+    }
+  }
 }
 
 // Format date as YYYY-MM-DD, n months ago. 0 = MAX (back to 1990)
